@@ -1,11 +1,17 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-  </body>
+<head>
+  <title><%= title %></title>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+<body>
+    <h1 class="title"><%= title %></h1>
+    <p class="welcome">A MongoDB Flight Tracker</p>
+  <nav>
+    <ul class="nav-links">
+      <li><a href="/flights">ALL FLIGHTS</a></li>
+      <li><a href="/flights/new">ADD FLIGHT</a></li>
+    </ul>
+  </nav>
+</body>
 </html>

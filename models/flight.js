@@ -4,13 +4,16 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const flightSchema = new Schema({
-  airline: String,
-  airport: String,
-  flightNo: Number,
-  departs: Date,
-}, {
-  timestamps: true
-});
+    airline: String,
+    airport: String,
+    flightNo: Number,
+    departs: {
+      type: Date,
+      default: Date.now  // default to current date and time
+    }
+  }, {
+    timestamps: true
+  });
 
-// Compile the schema into a model and export it
-module.exports = mongoose.model('Flight', flightSchemaSchema);
+// compile schema into model and export it
+module.exports = mongoose.model('Flight', flightSchema);

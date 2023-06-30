@@ -1,8 +1,48 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-family: Arial, sans-serif;
+  background-color: #f2f2f2;
+  margin: 0;
+  padding: 0;
 }
 
-a {
-  color: #00B7FF;
+.title {
+  color: #333;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.welcome {
+  text-align: center;
+  font-size: 18px;
+}
+
+.navbar {
+  background-color: #333;
+  height: 50px;
+}
+
+.nav-links {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  align-items: center;
+}
+
+.nav-links li {
+  margin: 0 10px;
+}
+
+.nav-links a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 16px;
+  padding: 8px 16px;
+  background-color:grey;
+}
+
+.nav-links a:hover {
+  background-color: #555;
 }

@@ -1,0 +1,27 @@
+body {
+  font-family: Arial, sans-serif;
+}
+  
+h1 {
+  color: black;
+}
+  
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+  
+th, td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid lightgrey;
+}
+  
+tr:hover {
+  background-color: lightgrey;
+}
+
+.past-flight {
+  color: red;
+  font-weight: bold;
+}

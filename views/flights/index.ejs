@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mongoose Flights</title>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/index.css">
+</head>
+<body>
+    <h1>All Flights</h1>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Airline</th>
+          <th>Airport</th>
+          <th>Flight No.</th>
+          <th>Departure Date/Time</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% flights.forEach(function(flight) { %>
+            <tr <% if (flight.departs < new Date()) { %>style="color: red;"<% } %>>
+                <td><%= flight.airline %></td>
+                <td><%= flight.airport %></td>
+                <td><%= flight.flightNo %></td>
+                <td><%= flight.departs.toLocaleString() %></td>
+            </tr>
+        <% }); %>
+      </tbody>
+    </table>
+    
+
+</body>
+</html>
