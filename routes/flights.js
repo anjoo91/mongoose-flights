@@ -1,9 +1,11 @@
 var express = require('express');
 var router = express.Router();
-var flightControllers = require('../controllers/flights');
+var flightCtrl = require('../controllers/flights');
 
-router.get('/', flightControllers.index);
-router.get('/new', flightControllers.new);
-router.post('/', flightControllers.create);
+router.get('/', flightCtrl.index);
+router.get('/new', flightCtrl.new);
+router.post('/', flightCtrl.create);
+router.get('/:id', flightCtrl.show);
+
 
 module.exports = router;

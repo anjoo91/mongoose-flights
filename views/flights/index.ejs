@@ -25,6 +25,7 @@
                 <td><%= flight.airport %></td>
                 <td><%= flight.flightNo %></td>
                 <td><%= flight.departs.toLocaleString() %></td>
+                <td><a href="/flights/<%= flight._id %>">Detail</a></td>
             </tr>
         <% }); %>
       </tbody>

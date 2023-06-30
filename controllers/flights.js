@@ -4,6 +4,7 @@ module.exports = {
     index,
     new: newController,
     create,
+    show,
   };
   
 
@@ -33,3 +34,12 @@ function create(req, res, next) {
     });
 }
 
+//show detail page
+async function show(req, res, next) {
+  try {
+    const flight = await Flight.findById(req.params.id).exec();
+    res.render('flights/show', { flight });
+  } catch (err) {
+    next(err);
+  }
+}

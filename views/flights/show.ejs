@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Flight Detail</title>
+  <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+<body>
+  <h1>Flight Detail</h1>
+
+  <h2>Airline: <%= flight.airline %></h2>
+  <p>Airport: <%= flight.airport %></p>
+  <p>Flight No.: <%= flight.flightNo %></p>
+  <p>Departure Date/Time: <%= flight.departs.toLocaleString() %></p>
+  <p>Destination: <%= flight.Destination %></p>
+  <a href="/flights">Back to All Flights</a>
+</body>
+</html>
