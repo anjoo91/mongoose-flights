@@ -7,20 +7,28 @@
 <body>
   <h1>Add Flight</h1>
 
-  <form method="POST" action="/flights">
+  <form action="/flights" method="POST">
     <label for="airline">Airline:</label>
-    <input type="text" name="airline" required>
-    
+    <select name="airline" id="airline">
+      <% flightSchema.forEach(function(option) { %>
+        <option value="<%= option %>"><%= option %></option>
+      <% }); %>
+    </select>
+
     <label for="airport">Airport:</label>
-    <input type="text" name="airport" required>
-    
+    <select name="airport" id="airport">
+      <% airportSchema.forEach(function(option) { %>
+        <option value="<%= option %>"><%= option %></option>
+      <% }); %>
+    </select>
+
     <label for="flightNo">Flight No.:</label>
-    <input type="number" name="flightNo" required>
-    
+    <input type="text" name="flightNo" id="flightNo" required>
+
     <label for="departs">Departure Date/Time:</label>
-    <input type="datetime-local" name="departs" required>
-    
-    <button type="submit">Submit</button>
+    <input type="datetime-local" name="departs" id="departs" required>
+
+    <button type="submit">Create Flight</button>
   </form>
 </body>
 </html>

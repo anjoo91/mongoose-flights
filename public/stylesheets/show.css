@@ -1,0 +1,40 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+  
+h1 {
+  color: #333;
+  text-align: center;
+}
+  
+.container {
+  width: 400px;
+  margin: 20px auto;
+  background-color: #fff;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+  
+.label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+  
+.field {
+  margin-bottom: 15px;
+}
+  
+.link {
+  display: block;
+  margin-top: 10px;
+  text-decoration: none;
+  color: #333;
+}
+
+#airport,
+#arrival {
+  margin-bottom: 15px;
+}

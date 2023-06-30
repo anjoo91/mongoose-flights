@@ -2,9 +2,10 @@ var Flight = require('../models/flight');
 
 module.exports = {
     index,
-    new: newController,
+    new: newFlight,
     create,
     show,
+    createDestination,
   };
   
 
@@ -19,8 +20,11 @@ async function index(req, res, next) {
 }
 
 // display the form for new flights
-function newController(req, res) {
-  res.render('flights/new');
+function newFlight(req, res) {
+  // pass flight schema airline & airport data for enum values
+  const flightSchema = Flight.schema.path('airline').options.enum;
+  const airportSchema = Flight.schema.path('airport').options.enum;
+  res.render('flights/new', { flightSchema, airportSchema });
 }
 
 // create a new flight
@@ -34,12 +38,42 @@ function create(req, res, next) {
     });
 }
 
-//show detail page
+// show detail page
 async function show(req, res, next) {
   try {
     const flight = await Flight.findById(req.params.id).exec();
-    res.render('flights/show', { flight });
+    // pass both flight & destination schema data to render;
+    // prevents error 500 (not defined); 
+    res.render('flights/show', { flight, destinationSchema: Flight.schema.path('destinations').schema });
   } catch (err) {
     next(err);
   }
 }
+
+// add destination from form into db
+async function createDestination(req, res, next) {
+  try {
+    const flight = await Flight.findById(req.params.id).exec();
+    if (!flight) {
+      return res.status(404).send('Flight not found');
+    }
+    
+    // init new object
+    const newDestination = {
+      airport: req.body.airport,
+      arrival: new Date(req.body.arrival)
+    };
+    
+    // push new destination to object
+    flight.destinations.push(newDestination);
+
+    // save updated info
+    const savedFlight = await flight.save();
+    
+    // redirect to show/:id
+    res.redirect('/flights/' + savedFlight._id);
+  } catch (err) {
+    next(err);
+  }
+}
+
