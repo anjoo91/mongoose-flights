@@ -1,4 +1,5 @@
 var Flight = require('../models/flight');
+var Ticket = require('../models/ticket');
 
 module.exports = {
     index,
@@ -42,13 +43,18 @@ function create(req, res, next) {
 async function show(req, res, next) {
   try {
     const flight = await Flight.findById(req.params.id).exec();
-    // pass both flight & destination schema data to render;
-    // prevents error 500 (not defined); 
-    res.render('flights/show', { flight, destinationSchema: Flight.schema.path('destinations').schema });
+    const tickets = await Ticket.find({ flight: flight._id }).exec();
+    res.render('flights/show', {
+      flightId: req.params.id,
+      flight,
+      tickets,
+      destinationSchema: Flight.schema.path('destinations').schema,
+    });
   } catch (err) {
     next(err);
   }
 }
+
 
 // add destination from form into db
 async function createDestination(req, res, next) {

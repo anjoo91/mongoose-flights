@@ -1,40 +1,73 @@
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f2f2f2;
-  padding: 20px;
-}
-  
-h1 {
-  color: #333;
-  text-align: center;
-}
-  
-.container {
-  width: 400px;
-  margin: 20px auto;
-  background-color: #fff;
-  padding: 20px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-}
-  
-.label {
-  font-weight: bold;
-  margin-bottom: 5px;
-}
-  
-.field {
-  margin-bottom: 15px;
-}
-  
-.link {
-  display: block;
-  margin-top: 10px;
-  text-decoration: none;
-  color: #333;
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 20px;
 }
 
-#airport,
-#arrival {
+.column1,
+.column2,
+.column3 {
+  border: 1px solid #ccc;
+  padding: 20px;
+}
+
+.column1 {
+  grid-column: 1;
+}
+
+.column2 {
+  grid-column: 2;
+}
+
+.column3 {
+  grid-column: 3;
+}
+
+.label {
+  font-weight: bold;
+}
+
+.field {
+  margin-bottom: 10px;
+}
+
+.destinations-container,
+.add-destination-container {
+  border: 1px solid #ccc;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 4px;
+}
+
+.btn-primary {
+  background-color: #007bff;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+a {
+  display: block;
+  margin-top: 20px;
+}
+
+.add-destination-container select {
+  margin-bottom: 10px;
+}
+
+.add-destination-container input[type="datetime-local"] {
   margin-bottom: 15px;
+}
+
+.add-destination-container button {
+  border: none;
 }

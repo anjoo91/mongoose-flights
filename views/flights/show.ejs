@@ -5,52 +5,72 @@
   <link rel="stylesheet" href="/stylesheets/show.css">
 </head>
 <body>
-    <h1>Flight Details</h1>
+  <h1>Flight Details</h1>
 
-    <div class="container">
+  <div class="grid-container">
+    <div class="column1">
       <h2 class="label">Airline:</h2>
       <p class="field"><%= flight.airline %></p>
-  
+
       <h2 class="label">Airport:</h2>
       <p class="field"><%= flight.airport %></p>
-  
+
       <h2 class="label">Flight No.:</h2>
       <p class="field"><%= flight.flightNo %></p>
-  
+
       <h2 class="label">Departure Date/Time:</h2>
       <p class="field"><%= flight.departs.toLocaleString() %></p>
-  
-      <h2 class="label">Destinations:</h2>
-      <ul>
-        <% flight.destinations.forEach(function(destination) { %>
+    </div>
+
+    <div class="column2">
+      <div class="destinations-container">
+        <h2 class="label">Destinations:</h2>
+        <ul>
+          <% flight.destinations.forEach(function(destination) { %>
           <li>
             <h3 class="label">Airport:</h3>
             <p class="field"><%= destination.airport %></p>
-  
+
             <h3 class="label">Arrival Date/Time:</h3>
             <p class="field"><%= destination.arrival.toLocaleString() %></p>
           </li>
-        <% }); %>
-      </ul>
-  
-      <h2 class="label">Add Destination:</h2>
-      <form action="/flights/<%= flight._id %>/destinations" method="POST">
-        <label for="airport">Airport:</label>
-        <select name="airport" id="airport">
-          <% destinationSchema.path('airport').enumValues.forEach(function(option) { %>
-            <option value="<%= option %>"><%= option %></option>
           <% }); %>
-        </select>
-        <br>
-        <label for="arrival">Arrival Date/Time:</label>
-        <input type="datetime-local" name="arrival" id="arrival" required>
-        <br>
-        <input type="submit" value="Add Destination">
-      </form>
+        </ul>
+      </div>
+
+      <div class="add-destination-container">
+        <h2 class="label">Add Destination:</h2>
+        <form action="/flights/<%= flight._id %>/destinations" method="POST">
+          <label for="airport">Airport:</label>
+          <select name="airport" id="airport">
+            <% destinationSchema.path('airport').enumValues.forEach(function(option) { %>
+            <option value="<%= option %>"><%= option %></option>
+            <% }); %>
+          </select>
+          <br>
+          <label for="arrival">Arrival Date/Time:</label>
+          <input type="datetime-local" name="arrival" id="arrival" required>
+          <br>
+          <button class="btn btn-primary" type="submit">Add Destination</button>
+        </form>
+      </div>
     </div>
 
+    <div class="column3">
+      <h2 class="label">Tickets:</h2>
+      <ul>
+        <% tickets.forEach(function(ticket) { %>
+        <li>
+          Seat: <%= ticket.seat %>
+          Price: <%= ticket.price %>
+        </li>
+        <% }); %>
+      </ul>
+
+      <a href="/flights/<%= flight._id %>/tickets/new" class="btn btn-primary">New Ticket</a>
+    </div>
+  </div>
+
   <a href="/flights">Back to All Flights</a>
-
-
 </body>
 </html>
